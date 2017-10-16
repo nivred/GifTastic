@@ -1,57 +1,73 @@
-var topic = ["wolf", "eagle", "shark", "deer", "sparrow", "dolphin"];
+$(document).ready(function($) {
 
-function displayGiphy() {
-	var topic = $(this).attr("chooseTopic");
-	var query = "http://api.giphy.com/v1/gifs/search?q="+topic+"&api_key=dc6zaTOxFJmzC&limit=10";
+	var topic = ["wolf", "eagle", "shark", "deer", "sparrow", "dolphin"];
+	function displayGiphy() {
+		$("#images").empty();
 
-	$.ajax({
-		url: queryURL,
-		method: "GET"
-	})
+		var topic = $(this).attr("data-name");
+		// var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=OgVDazF54ZOYgwxGk7JuTKttqFr4FAPb&q=q&limit=25&offset=10&rating=PG&lang=en"+topic
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&api_key=dc6zaTOxFJmzC&limit=10";
 
-	.done(function(response) {
-		console.log(response);
-		var imageUrl = response.data[0].images.original.webp;
-		console.log(imageUrl);
+		$.ajax({
+			url: queryURL,
+			method: "GET"
+		}).done(function(response) {
+			
+			console.log('response ' + response);
 
-		var topicImage = $("<img>");
+			console.log('response.data ' + response.data);
+			
+			for (var i = 0; i < response.data.length; i++) {
+				// var imageUrl = response.data[i].images.original.webp; //webp;
 
-		topicImage.attr("src", imageUrl);
-		topicImage.attr("alt", "none");
+				var imageUrl = response.data[i].images.fixed_width_still.url; //webp;
 
-		$("#images").prepend(topicImage);
+				console.log('imageUrl ' + imageUrl);
 
-	})
-}
+				var topicImage = $("<img>");
 
-function makeBtn() {
-	$("#displayBtns").empty();
-	console.log("number of topics" + topic.length);
+				topicImage.attr("src", imageUrl);
+				topicImage.attr("alt", topic);
 
-	for (var i = 0; i < topic.length; i++) {
-		var btn = $("<button>");
-
-		btn.addClass("topics");
-
-		btn.attr("data-name", topic[i]);
-
-		btn.text(topic[i]);
-
-		$("#displayBtns").append(btn);
+				$("#images").prepend(topicImage);
+			}
+		})
 	}
-	console.log(btn);
-}
 
-$("#addTopic").on("click", function(event) {
-	event.preventDefault();
+	function makeBtn() {
+		$("#displayBtns").empty();
+		
+		console.log("number of topics " + topic.length);
 
-	var topics = $("#chooseTopic").val().trim();
+		for (var i = 0; i < topic.length; i++) {
+			var btn = $("<button>");
 
-	topic.push(topics);
+			btn.addClass("topics");
+
+			btn.attr("data-name", topic[i]);
+
+			btn.text(topic[i]);
+
+			$("#displayBtns").append(btn);
+		}
+		console.log('btn ' + btn);
+	}
+
+
+	// $("#addTopic").on("click", function(event) 
+	$("#addTopic").on("click", function() {
+		//	stops browser from leaving the page
+		event.preventDefault();
+
+		var topics = $("#chooseTopic").val().trim();
+
+		topic.push(topics);
+
+		makeBtn();
+		$("#chooseTopic").val("");
+	});
+
+	$(document).on("click", ".topics", displayGiphy);
 
 	makeBtn();
 });
-
-$(document).on("click", ".topics", displayGiphy);
-
-makeBtn();

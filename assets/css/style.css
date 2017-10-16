@@ -1,4 +1,12 @@
 .topics {
+	background-color: #cce6ff;
+	margin-right: 5px;
+}
+
+#images {
+	background-color: lightyellow;
+}
+
+#form {
 	background-color: lightblue;
-	margin-right: 10px;
 }
