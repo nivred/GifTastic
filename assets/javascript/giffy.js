@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+$(document).ready(function() {
 
 	var topic = ["wolf", "eagle", "shark", "deer", "sparrow", "dolphin"];
 	function displayGiphy() {
@@ -20,16 +20,28 @@ $(document).ready(function($) {
 			for (var i = 0; i < response.data.length; i++) {
 				// var imageUrl = response.data[i].images.original.webp; //webp;
 
+				var gifDiv = $("<div>");
+				gifDiv.addClass("gif");
+				var imageRating = response.data[i].rating;
 				var imageUrl = response.data[i].images.fixed_width_still.url; //webp;
 
+				console.log('rating ' + imageRating);
 				console.log('imageUrl ' + imageUrl);
 
-				var topicImage = $("<img>");
+				var topicRating = $("<p>");
+				topicRating.addClass("rating");
+				topicRating.css("font-size", "14px");
+				topicRating.text("Rating " + imageRating);
 
+
+				var topicImage = $("<img>");
 				topicImage.attr("src", imageUrl);
 				topicImage.attr("alt", topic);
 
-				$("#images").prepend(topicImage);
+				gifDiv.prepend(topicRating);
+            	gifDiv.prepend(topicImage);
+
+				$("#images").prepend(gifDiv);
 			}
 		})
 	}
