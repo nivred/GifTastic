@@ -30,16 +30,15 @@ $(document).ready(function() {
 
 				var topicRating = $("<p>");
 				topicRating.addClass("rating");
-				topicRating.css("font-size", "14px");
-				topicRating.text("Rating " + imageRating);
-
+				// topicRating.css("font-size", "14px");
+				topicRating.text("Rated " + imageRating);
 
 				var topicImage = $("<img>");
 				topicImage.attr("src", imageUrl);
 				topicImage.attr("alt", topic);
 
-				gifDiv.prepend(topicRating);
             	gifDiv.prepend(topicImage);
+				gifDiv.prepend(topicRating);
 
 				$("#images").prepend(gifDiv);
 			}

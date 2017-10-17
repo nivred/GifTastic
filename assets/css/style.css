@@ -1,16 +1,27 @@
-#display{
-	margin: 20px 0;
+h3 {
+	color: #fff;
+	padding-top: 20px;
 }
 
-.topics {
-	background-color: #cce6ff;
-	margin-bottom: 5px;
-	margin-right: 5px;
+p {
+	margin-bottom: 0;
+	padding-left: 10px;	
+}
+
+#images {
+	column-count: 2;
+	margin-top: 10px;
 }
 
 .gif {
 	background-color: pink;
 	display: inline-block;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.gif:nth-child(even) {
+	margin-right: 0;
 }
 
 .rating {
@@ -18,5 +29,21 @@
 }
 
 img {
-	padding: 15px;
+	display: block;
+	height: auto;
+	width: 18em;
+}
+
+#form {
+	background-color: #ccc;
+}
+
+#displayBtns {
+	margin-top: 20px;
+}
+
+.topics {
+	background-color: #cce6ff;
+	margin-bottom: 5px;
+	margin-right: 5px;
 }
