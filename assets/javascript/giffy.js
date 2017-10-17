@@ -52,31 +52,40 @@ $(document).ready(function() {
 
 		for (var i = 0; i < topic.length; i++) {
 			var btn = $("<button>");
-
 			btn.addClass("topics");
-
 			btn.attr("data-name", topic[i]);
-
 			btn.text(topic[i]);
-
 			$("#displayBtns").append(btn);
 		}
 		console.log('btn ' + btn);
 	}
 
 
-	// $("#addTopic").on("click", function(event) 
-	$("#addTopic").on("click", function() {
+	$("#addTopic").on("click", function(event) {
 		//	stops browser from leaving the page
 		event.preventDefault();
-
 		var topics = $("#chooseTopic").val().trim();
-
 		topic.push(topics);
-
 		makeBtn();
 		$("#chooseTopic").val("");
 	});
+
+
+
+
+	$(".gif").on("click", function() {
+    	var state = $(this).attr("data-state");
+    	if (state === "still") {
+    		$(this).attr("src", $(this).attr("data-animate"));
+    		$(this).attr("data-state", "animate");
+    } else {
+    		$(this).attr("src", $(this).attr("data-still"));
+    		$(this).attr("data-state", "still");
+    	}
+    });
+
+
+
 
 	$(document).on("click", ".topics", displayGiphy);
 
