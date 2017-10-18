@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
-	var topic = [];
+	var topic = ["wolf", "shark", "eagle"];
 	function displayGiphy() {
 		$("#images").empty();
 
 		var topic = $(this).attr("data-name");
-		var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=OgVDazF54ZOYgwxGk7JuTKttqFr4FAPb&q="+topic+"&limit=25&offset=10&rating=PG&g&lang=en"
+		var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=OgVDazF54ZOYgwxGk7JuTKttqFr4FAPb&q="+topic+"&limit=10&offset="+Math.floor(Math.random()*500)+"&rating=PG&g&lang=en"
 		// var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&api_key=dc6zaTOxFJmzC&limit=10";
 
 		$.ajax({
