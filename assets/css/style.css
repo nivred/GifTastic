@@ -1,5 +1,6 @@
 h3 {
 	color: #fff;
+	font-size: .98rem;
 	padding-top: 20px;
 }
 
@@ -8,16 +9,24 @@ p {
 	padding-left: 10px;	
 }
 
+.container {
+	padding: 0;
+}
+
+.jumbotron {
+	margin: 0 0 10px 0;
+	padding: 1rem 2rem;
+}
+
 #images {
 	column-count: 2;
-	margin-top: 10px;
+	padding: 0;
 }
 
 .gif {
 	background-color: pink;
 	display: inline-block;
 	margin-bottom: 10px;
-	margin-right: 10px;
 }
 
 .gif:nth-child(even) {
@@ -25,21 +34,26 @@ p {
 }
 
 .rating {
-	background-color: yellow;
+	background-color: lightyellow;
 }
 
 img {
 	display: block;
 	height: auto;
-	width: 18em;
+	width: 19em;
 }
 
 #form {
 	background-color: #ccc;
 }
 
+#chooseTopic {
+	width: 12.2rem;
+}
+
 #displayBtns {
 	margin-top: 20px;
+	text-align: left;
 }
 
 .topics {

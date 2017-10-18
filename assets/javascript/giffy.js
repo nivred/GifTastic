@@ -1,27 +1,23 @@
 $(document).ready(function() {
 
-	var topic = ["wolf", "eagle", "shark", "deer", "sparrow", "dolphin"];
+	var topic = [];
 	function displayGiphy() {
 		$("#images").empty();
 
 		var topic = $(this).attr("data-name");
-		// var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=OgVDazF54ZOYgwxGk7JuTKttqFr4FAPb&q=q&limit=25&offset=10&rating=PG&lang=en"+topic
-		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&api_key=dc6zaTOxFJmzC&limit=10";
+		var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=OgVDazF54ZOYgwxGk7JuTKttqFr4FAPb&q="+topic+"&limit=25&offset=10&rating=PG&g&lang=en"
+		// var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&api_key=dc6zaTOxFJmzC&limit=10";
 
 		$.ajax({
 			url: queryURL,
 			method: "GET"
 		}).done(function(response) {
-			
 			console.log('response ' + response);
-
 			console.log('response.data ' + response.data);
 
 			var state = "still"
-			
 			for (var i = 0; i < response.data.length; i++) {
 				// var imageUrl = response.data[i].images.original.webp; //webp;
-
 				var gifDiv = $("<div>");
 				gifDiv.addClass("gif");
 				gifDiv.attr("id", i);
@@ -54,7 +50,6 @@ $(document).ready(function() {
 
 	function makeBtn() {
 		$("#displayBtns").empty();
-		
 		console.log("number of topics " + topic.length);
 
 		for (var i = 0; i < topic.length; i++) {
@@ -84,7 +79,7 @@ $(document).ready(function() {
     	if (state === "still") {
     		$(this).attr("src", $(this).attr("data-animate"));
     		$(this).attr("data-state", "animate");
-    } else {
+    	} else {
     		$(this).attr("src", $(this).attr("data-still"));
     		$(this).attr("data-state", "still");
     	}
@@ -96,6 +91,6 @@ $(document).ready(function() {
 	makeBtn();
 });
 
-//	click event listener for specifice div targeted
+//	click event listener for specify div targeted
 //	grab image animated URL
 //	apply gif to image thats clicked
